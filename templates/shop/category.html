@@ -1,0 +1,17 @@
+<!-- {% block content %}{% if category %}{{ category.name }}{% else %}Products{% endif %}{% endblock %} -->
+
+<div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span  {% if not category %}class="selected"{% endif %} >
+                                <a href="{% url 'shop:product_list' %}">
+                                All departments
+                                </a>
+                            </span>
+                        </div>
+                        <ul>
+                            {% for c in categories %}        
+                            <li {% if category.slug == c.slug %}class="selected"{% endif %}>          
+                                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>       
+                            </li>      
+                            {% endfor %}
+                        </ul>
