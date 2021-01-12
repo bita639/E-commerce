@@ -20,7 +20,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name='category')
     name = models.CharField(max_length=200, db_index=True, verbose_name='name')
     slug = models.SlugField(max_length=200, db_index=True, verbose_name='slug')
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to="products", default='ProductImage/blank.png', blank=True, null=True)
     description = models.TextField(blank=True, verbose_name='description')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='price')
     stock = models.PositiveIntegerField()
